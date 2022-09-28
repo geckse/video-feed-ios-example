@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "video-feed-ios-example",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

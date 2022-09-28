@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+
+  <div class="feed" (scroll)="feedScrolling($event)">
+    <div #horizontalSlider class="challenge horizontal-slider" *ngFor="let challenge of challenges; let c = index" (scroll)="horizontalScrolling($event)">
+
+        <div #clickSlider class="horizontal-slide click-slider" (click)="onClickSlide($event)">
+          <div *ngFor="let slide of challenge.slides; let i = index" class="click-slide slide-{{i}}">
+
+            <div class="challenge-item" *ngIf="slide.type != 'video-package'">
+              <img [src]="slide.mediaSrcs.imgFull">
+            </div>
+
+            <div class="challenge-item item-{{c}}-0 video-item" *ngIf="slide.type.indexOf('video') != -1">
+              <video #challengeVideo class="challenge video" webkit-playsinline playsinline="playinline"
+                (ended)="onVideoEnded($event)" *ngIf="challenge.state == 'public'">
+                <source src="{{slide.mediaSrcs.webmFull}}" type='video/webm;'>
+                <source src="{{slide.mediaSrcs.mp4Full}}#t=0.5" type='video/mp4;'>
+              </video>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="horizontal-slide entry" *ngFor="let entry of challenge.entries; let e = index">
+
+          <div class="entry-item item-{{c}}-{{e+1}} " *ngIf="entry.media.mediaType != 'video-package'">
+            <img [src]="entry.mediaSrcs.imgFull">
+          </div>
+
+          <div class="entry-item item-{{c}}-{{e+1}} video-item" *ngIf="entry.media.mediaType.indexOf('video') != -1">
+            <video #entryVideo class="entry video" webkit-playsinline playsinline="playinline"
+              (ended)="onVideoEnded($event)" *ngIf="entry.state == 'public'">
+              <source src="{{entry.mediaSrcs.webmFull}}" type='video/webm;'>
+              <source src="{{entry.mediaSrcs.mp4Full}}#t=0.5" type='video/mp4;'>
+            </video>
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+
+
+</ion-content>

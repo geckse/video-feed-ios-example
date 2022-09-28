@@ -1,0 +1,7 @@
+{
+  "name": "video-feed-ios-example",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
