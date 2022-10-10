@@ -10,6 +10,7 @@ export class HomePage {
 
 
   challenges: any;
+  entries: any;
 
   vertIndex = 0;
   playIndex = 0;
@@ -30,6 +31,13 @@ export class HomePage {
     }).catch((error) => {
       console.log('Feed loading error: ',error);
     });
+
+    this.http.get('https://api.spotshot.io/api/v1/spotshots').toPromise().then((data) => {
+      this.entries = data;
+    }).catch((error) => {
+      console.log('Feed loading error: ',error);
+    });
+
   }
 
   onVideoEnded(ev){
@@ -150,9 +158,13 @@ export class HomePage {
 
       // play active video 
       let activeVideo = document.querySelector('.item-'+this.playIndex+'-'+this.horiPlayIndex+' video');
+      console.log(activeVideo);
       if(activeVideo){
         // @ts-ignore
-        activeVideo.play();
+        setTimeout(() => {
+          // @ts-ignore
+          if(activeVideo.paused) activeVideo.play();
+        },100);
       }
     }
 

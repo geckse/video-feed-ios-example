@@ -4,11 +4,17 @@
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 100vh;
-  > .challenge {
+  > .challenge, .entry {
     scroll-snap-align: center;
     scroll-snap-stop: always;
+    > .entry-item {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+    }
  }
 }
+
 
 .horizontal-slider {
   scroll-behavior: smooth;
