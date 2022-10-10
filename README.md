@@ -40,7 +40,8 @@ You'll have to test it on an actual iPhone, the simulators don't throw these err
 
 - [x] Checked if inline playing is allowed in [webkit config](https://github.com/ionic-team/capacitor/blob/main/ios/Capacitor/Capacitor/CAPBridgeViewController.swift#L108)
 - [x] Created entries in Info.plist (Microphone & Camera Usage)
-- [x] Enabled entitlements: Background Mode > Audio Airplay Picture-in-Picture, Background fetch, Background-Processing
+- [x] Enabled entitlements: [Background Mode](https://developer.apple.com/forums/thread/709919) > Audio Airplay Picture-in-Picture, Background fetch, Background-Processing
+- [x] Enabled webview.allowsBackForwardNavigationGestures = true & aWebView.allowsLinkPreview = true
 - [x] Allowed arbitrary loads in Info.plist
 - [x] Removed all overlaying UI infront of the videos (position absolute elements)
 - [x] Removed position absolute/relative on the <video>-element itself
